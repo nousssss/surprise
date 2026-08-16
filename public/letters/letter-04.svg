@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="850" viewBox="0 0 1200 850">
+      <rect width="1200" height="850" fill="#fffaf3"/>
+      <rect x="45" y="45" width="1110" height="760" rx="38" fill="#fffdf8" stroke="#d8b889" stroke-width="4"/>
+      <circle cx="1050" cy="135" r="42" fill="#f5c9cf"/>
+      <text x="600" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="54" fill="#6f5b4b" direction="rtl">رسالة من الطالبة 4</text>
+      <text x="600" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="#927e6b" direction="rtl">هنا ستضعون صورة الرسالة الحقيقية 💌</text>
+      <text x="600" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="25" fill="#b49c87" direction="rtl">معهد الإتقان · المستوى الثاني → المستوى الثالث</text>
+      <text x="600" y="650" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#c7a875" direction="rtl">إلى معلمتنا عفاف رياش، بكل محبة 🤍</text>
+    </svg>
