@@ -397,7 +397,7 @@ function JourneyTraveler({ stage, isWalking }) {
     >
       <img
         className="journey-traveler-image"
-        src="/images/traveler.png"
+        src="./images/traveler.png"
         alt=""
       />
 
@@ -481,7 +481,7 @@ function IslandPlayground({ number, collected, onCollect, onClose, onOpenEnvelop
 
           <div className="island-traveler" aria-hidden="true">
   <img
-    src="/images/traveler.png"
+    src="./images/traveler.png"
     alt=""
   />
 </div>
@@ -548,7 +548,7 @@ function DiscoveryScene({ number, onClose, onOpenLetter }) {
 
           <div className="floating-letter">
   <img
-    src="/images/letter-envelope.png"
+    src="./images/letter-envelope.png"
     alt=""
   />
 </div>
