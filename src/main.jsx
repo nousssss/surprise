@@ -2,6 +2,8 @@
 import React, { useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
+import travelerImage from "./assets/traveler.png";
+import letterEnvelopeImage from "./assets/letter-envelope.png";
 
 const TOTAL = 11;
 
@@ -397,7 +399,7 @@ function JourneyTraveler({ stage, isWalking }) {
     >
       <img
         className="journey-traveler-image"
-        src="${import.meta.env.BASE_URL}images/traveler.png"
+        src={travelerImage}
         alt=""
       />
 
@@ -481,7 +483,7 @@ function IslandPlayground({ number, collected, onCollect, onClose, onOpenEnvelop
 
           <div className="island-traveler" aria-hidden="true">
   <img
-    src="${import.meta.env.BASE_URL}images/traveler.png"
+    src={travelerImage}
     alt=""
   />
 </div>
@@ -548,7 +550,7 @@ function DiscoveryScene({ number, onClose, onOpenLetter }) {
 
           <div className="floating-letter">
   <img
-    src="${import.meta.env.BASE_URL}images/letter-envelope.png"
+    src={letterEnvelopeImage}
     alt=""
   />
 </div>
