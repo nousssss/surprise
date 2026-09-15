@@ -97,21 +97,21 @@ const TOTAL = studentLetters.length;
 const students = studentLetters.map((item) => item.name);
 
 const islands = [
-  { id: 1, emoji: "🌸", title: "رسالة ١", caption: "بداية الحكاية", collectible: "🌸", secret: "وجدتِ زهرة صغيرة! ✿", action: "اضغطي على الزهرة", kind: "garden" },
-  { id: 2, emoji: "🏡", title: "رسالة ٢", caption: "ذكرى جميلة", collectible: "🦋", secret: "فراشة صغيرة كانت تنتظركِ! 🦋", action: "هل رأيتِ الفراشة؟", kind: "home" },
-  { id: 3, emoji: "🌳", title: "رسالة ٣", caption: "لحظة لا تُنسى", collectible: "🐦", secret: "حتى العصفور جاء ليستمع! 🐦", action: "اضغطي على العصفور", kind: "tree" },
-  { id: 4, emoji: "🪻", title: "رسالة ٤", caption: "من القلب", collectible: "🏮", secret: "أنرتِ الفانوس! ✨", action: "أضيئي الفانوس", kind: "gazebo" },
-  { id: 5, emoji: "🌷", title: "رسالة ٥", caption: "كلمات امتنان", collectible: "🎀", secret: "وجدتِ شريطة جميلة! 🎀", action: "خذي الشريطة", kind: "garden2" },
-  { id: 6, emoji: "⛺", title: "رسالة ٦", caption: "محطة دافئة", collectible: "📖", secret: "هناك كتاب صغير هنا… 📖", action: "افتحي الكتاب", kind: "tent" },
-  { id: 7, emoji: "🌴", title: "رسالة ٧", caption: "معًا في الطريق", collectible: "🩷", secret: "قلب صغير لكِ! 🩷", action: "التقطي القلب", kind: "home2" },
-  { id: 8, emoji: "💜", title: "رسالة ٨", caption: "أثر طيب", collectible: "🪻", secret: "زهرة اللافندر تهديكِ رائحتها 🌿", action: "المسي الزهرة", kind: "pergola" },
-  { id: 9, emoji: "🏮", title: "رسالة ٩", caption: "من ذكرياتنا", collectible: "🌙", secret: "القمر ظهر لكِ! 🌙", action: "المسي القمر", kind: "lantern" },
-  { id: 10, emoji: "🕌", title: "رسالة ١٠", caption: "اقتربنا...", collectible: "⭐", secret: "وجدتِ نجمة جميلة! ⭐", action: "التقطي النجمة", kind: "dome" },
-  { id: 11, emoji: "🌿", title: "رسالة ١١", caption: "كلمة أخرى من القلب", collectible: "🤍", secret: "وجدتِ قلبًا أبيض صغيرًا 🤍", action: "المسي القلب", kind: "garden3" },
-  { id: 12, emoji: "🕊️", title: "رسالة ١٢", caption: "دعاء جميل", collectible: "🕊️", secret: "حمامة سلام انضمّت إلى الرحلة 🕊️", action: "اقتربي من الحمامة", kind: "dove" },
-  { id: 13, emoji: "🪷", title: "رسالة ١٣", caption: "كلمة دافئة", collectible: "🪷", secret: "وجدتِ زهرة لوتس صغيرة 🪷", action: "المسي الزهرة", kind: "lotus" },
-  { id: 14, emoji: "🌼", title: "رسالة ١٤", caption: "قرب النهاية", collectible: "🌼", secret: "زهرة أخيرة قبل المحطة الأخيرة 🌼", action: "التقطي الزهرة", kind: "meadow" },
-  { id: 15, emoji: "🌺", title: "رسالة ١٥", caption: "المحطة الأخيرة", collectible: "💗", secret: "وصلتِ إلى قلب الرحلة كله 💗", action: "افتحي المحطة الأخيرة", kind: "final" },
+  { id: 1, emoji: "🌸", title: "المحطة ١", caption: "بداية الحكاية", collectible: "🌸", secret: "وجدتِ زهرة صغيرة! ✿", action: "اضغطي على الزهرة", kind: "garden" },
+  { id: 2, emoji: "🏡", title: "المحطة ٢", caption: "ذكرى جميلة", collectible: "🦋", secret: "فراشة صغيرة كانت تنتظركِ! 🦋", action: "هل رأيتِ الفراشة؟", kind: "home" },
+  { id: 3, emoji: "🌳", title: "المحطة ٣", caption: "لحظة لا تُنسى", collectible: "🐦", secret: "حتى العصفور جاء ليستمع! 🐦", action: "اضغطي على العصفور", kind: "tree" },
+  { id: 4, emoji: "🪻", title: "المحطة ٤", caption: "من القلب", collectible: "🏮", secret: "أنرتِ الفانوس! ✨", action: "أضيئي الفانوس", kind: "gazebo" },
+  { id: 5, emoji: "🌷", title: "المحطة ٥", caption: "كلمات امتنان", collectible: "🎀", secret: "وجدتِ شريطة جميلة! 🎀", action: "خذي الشريطة", kind: "garden2" },
+  { id: 6, emoji: "⛺", title: "المحطة ٦", caption: "محطة دافئة", collectible: "📖", secret: "هناك كتاب صغير هنا… 📖", action: "افتحي الكتاب", kind: "tent" },
+  { id: 7, emoji: "🌴", title: "المحطة ٧", caption: "معًا في الطريق", collectible: "🩷", secret: "قلب صغير لكِ! 🩷", action: "التقطي القلب", kind: "home2" },
+  { id: 8, emoji: "💜", title: "المحطة ٨", caption: "أثر طيب", collectible: "🪻", secret: "زهرة اللافندر تهديكِ رائحتها 🌿", action: "المسي الزهرة", kind: "pergola" },
+  { id: 9, emoji: "🏮", title: "المحطة ٩", caption: "من ذكرياتنا", collectible: "🌙", secret: "القمر ظهر لكِ! 🌙", action: "المسي القمر", kind: "lantern" },
+  { id: 10, emoji: "🕌", title: "المحطة ١٠", caption: "اقتربنا...", collectible: "⭐", secret: "وجدتِ نجمة جميلة! ⭐", action: "التقطي النجمة", kind: "dome" },
+  { id: 11, emoji: "🌿", title: "المحطة ١١", caption: "كلمة أخرى من القلب", collectible: "🤍", secret: "وجدتِ قلبًا أبيض صغيرًا 🤍", action: "المسي القلب", kind: "garden3" },
+  { id: 12, emoji: "🕊️", title: "المحطة ١٢", caption: "دعاء جميل", collectible: "🕊️", secret: "حمامة سلام انضمّت إلى الرحلة 🕊️", action: "اقتربي من الحمامة", kind: "dove" },
+  { id: 13, emoji: "🪷", title: "المحطة ١٣", caption: "كلمة دافئة", collectible: "🪷", secret: "وجدتِ زهرة لوتس صغيرة 🪷", action: "المسي الزهرة", kind: "lotus" },
+  { id: 14, emoji: "🌼", title: "المحطة ١٤", caption: "قرب النهاية", collectible: "🌼", secret: "زهرة أخيرة قبل المحطة الأخيرة 🌼", action: "التقطي الزهرة", kind: "meadow" },
+  { id: 15, emoji: "🌺", title: "المحطة ١٥", caption: "المحطة الأخيرة", collectible: "💗", secret: "وصلتِ إلى قلب الرحلة كله 💗", action: "افتحي المحطة الأخيرة", kind: "final" },
 ];
 
 
@@ -333,7 +333,7 @@ function Journey({
         <div>
           <div className="brand">معهد الإتقان <span>✦</span></div>
           <h2>رحلتنا نحو المستوى الثالث</h2>
-          <p>إلى معلمتنا عفاف رياش، بكل المحبة 🤍</p>
+          <p>إلى معلمتنا عفاف رياش، بكل حب 🤍</p>
         </div>
         <div className="progress">
           <div className="progress-text">
@@ -509,7 +509,6 @@ function Journey({
             <span>🎒</span>
             <div>
               <strong>حقيبة الذكريات</strong>
-              <small>كل محطة تمنحكِ شيئًا صغيرًا</small>
             </div>
             <b>{collection.length}/{TOTAL}</b>
           </div>
@@ -535,14 +534,14 @@ function Journey({
             <span>
               {progress === TOTAL
                 ? "ولكل واحدة منّا كلمة أخيرة لكِ..."
-                : "اضغطي على الجزيرة المضيئة، واستكشفي ما تخبّئه"}
+                : "اضغطي على الجزيرة المضيئة، واكتشفي ما تخبّئه"}
             </span>
           </div>
         </div>
       </div>
 
       <footer className="journey-footer">
-        <span>صُنعت بحب من طالبات المستوى الثاني ♡</span>
+        <span>صُنعت بحب من طالباتك ♡</span>
         <button className="restart-button" onClick={onReset}>↺ ابدئي الرحلة من جديد</button>
       </footer>
     </section>
@@ -616,7 +615,7 @@ function IslandCard({
     : ""}
 </small>
       </span>
-      {current && !discovered && <span className="tap-hint">استكشفيها ✨</span>}
+      {current && !discovered && <span className="tap-hint">اكتشفيها ✨</span>}
     </button>
   );
 }
