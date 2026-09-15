@@ -389,8 +389,10 @@ function Journey({
           </svg>
 
           {islands.map((island) => {
-            const unlocked = island.id <= progress + 1;
             const discovered = island.id <= progress;
+            const current = island.id === progress + 1;
+            const unlocked = discovered || current;
+
             return (
               <IslandCard
                 key={island.id}
@@ -398,7 +400,7 @@ function Journey({
                 unlocked={unlocked}
                 discovered={discovered}
                 collected={collection.includes(island.id)}
-                current={island.id === progress + 1}
+                current={current}
                 onClick={() => onOpen(island.id)}
               />
             );

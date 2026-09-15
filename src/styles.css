@@ -1856,3 +1856,149 @@ button:focus-visible{outline:3px solid rgba(191,128,139,.5);outline-offset:3px}
   }
 }
 
+/* =====================================================================
+   MOBILE MAP FIX v3
+   - visited/unlocked islands stay colorful
+   - traveler is larger
+   - traveler hugs the current island instead of floating near the path
+   ===================================================================== */
+
+@media (max-width: 820px) {
+
+  /* Explicitly restore full color for every island that is available or visited.
+     The !important rules prevent older grayscale mobile/desktop rules from
+     winning in Safari. */
+  button.island-card.unlocked,
+  button.island-card.discovered,
+  button.island-card.current {
+    opacity: 1 !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
+
+  button.island-card.unlocked .island-illustration,
+  button.island-card.discovered .island-illustration,
+  button.island-card.current .island-illustration {
+    opacity: 1 !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
+
+  button.island-card.unlocked .water-ring,
+  button.island-card.discovered .water-ring,
+  button.island-card.current .water-ring {
+    background:
+      radial-gradient(
+        ellipse at 35% 30%,
+        rgba(255,255,255,.36),
+        transparent 45%
+      ),
+      rgba(92,182,185,.34) !important;
+
+    box-shadow:
+      inset 0 0 0 5px rgba(255,255,255,.34),
+      0 7px 13px rgba(75,98,99,.14) !important;
+  }
+
+  button.island-card.unlocked .island-ground,
+  button.island-card.discovered .island-ground,
+  button.island-card.current .island-ground {
+    background:
+      linear-gradient(
+        145deg,
+        #ffd7ad 0%,
+        #efb39f 52%,
+        #d49770 100%
+      ) !important;
+  }
+
+  button.island-card.unlocked .island-detail.main,
+  button.island-card.discovered .island-detail.main,
+  button.island-card.current .island-detail.main {
+    opacity: 1 !important;
+    filter: drop-shadow(0 4px 2px rgba(71,61,46,.15)) !important;
+    -webkit-filter: drop-shadow(0 4px 2px rgba(71,61,46,.15)) !important;
+  }
+
+  /* Future stations remain visibly locked/gray. */
+  button.island-card.locked {
+    opacity: .46 !important;
+    filter: grayscale(1) saturate(.08) !important;
+    -webkit-filter: grayscale(1) saturate(.08) !important;
+  }
+
+  /* Make the companion much easier to see on a phone. */
+  .journey-traveler {
+    width: 112px !important;
+    height: 158px !important;
+    z-index: 10 !important;
+  }
+
+  .journey-traveler-image {
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 112px !important;
+    max-width: none !important;
+    filter: drop-shadow(0 8px 7px rgba(82,59,71,.18)) !important;
+  }
+
+  /*
+    Because the page is RTL, the odd stations render on the physical LEFT
+    and the even stations on the physical RIGHT.
+
+    Put the traveler on the INNER edge of each island, right beside it:
+      odd island  -> traveler to its right
+      even island -> traveler to its left
+  */
+  .journey-traveler.traveler-stage-0  { left: 37% !important; top: calc(4.55% - 78px) !important; }
+  .journey-traveler.traveler-stage-1  { left: 49% !important; top: calc(13.64% - 78px) !important; }
+  .journey-traveler.traveler-stage-2  { left: 37% !important; top: calc(22.73% - 78px) !important; }
+  .journey-traveler.traveler-stage-3  { left: 49% !important; top: calc(31.82% - 78px) !important; }
+  .journey-traveler.traveler-stage-4  { left: 37% !important; top: calc(40.91% - 78px) !important; }
+  .journey-traveler.traveler-stage-5  { left: 49% !important; top: calc(50.00% - 78px) !important; }
+  .journey-traveler.traveler-stage-6  { left: 37% !important; top: calc(59.09% - 78px) !important; }
+  .journey-traveler.traveler-stage-7  { left: 49% !important; top: calc(68.18% - 78px) !important; }
+  .journey-traveler.traveler-stage-8  { left: 37% !important; top: calc(77.27% - 78px) !important; }
+  .journey-traveler.traveler-stage-9  { left: 49% !important; top: calc(86.36% - 78px) !important; }
+  .journey-traveler.traveler-stage-10 { left: 37% !important; top: calc(95.45% - 78px) !important; }
+
+  /* Keep the current station visually special after restoring its color. */
+  button.island-card.current .water-ring {
+    box-shadow:
+      inset 0 0 0 5px rgba(255,255,255,.40),
+      0 0 0 5px rgba(238,151,178,.22),
+      0 0 30px rgba(222,112,147,.42) !important;
+  }
+
+  button.island-card.current .island-number {
+    box-shadow:
+      0 6px 14px rgba(150,75,95,.20),
+      0 0 0 8px rgba(239,171,192,.22),
+      0 0 25px rgba(239,146,174,.42) !important;
+  }
+}
+
+/* Very narrow phones: keep her large, but avoid covering the whole station. */
+@media (max-width: 430px) {
+  .journey-traveler {
+    width: 102px !important;
+    height: 148px !important;
+  }
+
+  .journey-traveler-image {
+    width: 102px !important;
+  }
+
+  .journey-traveler.traveler-stage-0  { left: 36% !important; }
+  .journey-traveler.traveler-stage-1  { left: 48% !important; }
+  .journey-traveler.traveler-stage-2  { left: 36% !important; }
+  .journey-traveler.traveler-stage-3  { left: 48% !important; }
+  .journey-traveler.traveler-stage-4  { left: 36% !important; }
+  .journey-traveler.traveler-stage-5  { left: 48% !important; }
+  .journey-traveler.traveler-stage-6  { left: 36% !important; }
+  .journey-traveler.traveler-stage-7  { left: 48% !important; }
+  .journey-traveler.traveler-stage-8  { left: 36% !important; }
+  .journey-traveler.traveler-stage-9  { left: 48% !important; }
+  .journey-traveler.traveler-stage-10 { left: 36% !important; }
+}
+
