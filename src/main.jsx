@@ -5,21 +5,68 @@ import "./styles.css";
 import travelerImage from "./assets/traveler.png";
 import letterEnvelopeImage from "./assets/letter-envelope.png";
 
-const TOTAL = 11;
+const studentLetters = [
+  { id: 1,  name: "سهيلة عمراوي",      type: "text",  text: `إلى معلمتي الغالية 🌷عفاف رياش🌷
 
-const students = [
-  "سهيلة عمراوي",
-  "كوثر إبراهيم",
-  "فاطمة عياد",
-  "إيناس بشيري",
-  "الحاسي جهيدة",
-  "سمراء بن فليس",
-  "حفصة حمدان",
-  "كوثر بن حمزة",
-  "سارة البعدوي",
-  "مريم السيدي",
-  "نعيمة شوافي",
+إلى تلك التي لطالما كانت سندا في رحلة تعلم أحڪام ڪتاب اللّٰه 
+
+كنتِ المعلّمة والأخت والصّديقة في الوقت ذاته أعجبتني روحك الطيبة والمرحة 
+وأعجبتني طريقتڪ في تقديم الدّروس وشرحها وعدم تهاونڪ في تبسيط كل ما أشڪل علينا 
+أعجبني اهتمامك بطالباتك وتشجيعك لهن في كل الأوقات.. 
+
+لا أخفيك أنك ڪنت جزءا من محاولاتي المتواصلة و جهادي في تحصيل الدرجات و اجتياز الامتحانات
+كوني وجدت فيك المعلمة التي أريدها وأخاف أن أخسرها 
+
+جزاك اللّٰه عنّا خير الجزاء في الدّنيا والآخرة  وكتب اللّٰه أجرك ورزقك من واسع فضله العظيم 
+أحبّك في اللّٰه 🌷` },
+  { id: 2,  name: "كوثر إبراهيم",      type: "image", file: "letter-02.png" },
+  { id: 3,  name: "فاطمة عياد",        type: "image", file: "letter-03.png" },
+  { id: 4,  name: "إيناس بشيري",       type: "text",  text: `...` },
+  { id: 5,  name: "الحاسي جهيدة",      type: "audio", file: "letter-05.m4a" },
+  { id: 6,  name: "سمراء بن فليس",     type: "audio", file: "letter-06.m4a" },
+  { id: 7,  name: "حفصة حمدان",        type: "text",  text: `رسالة إلى معلمتي الغالية عفاف رياش من تلميذتيك حفصة حمدان 🥰🥰
+        كانت بدايتي مع القرآن تتذبذب بين الشغف والرهبة. كنتُ أفتح المصحف وأشعر بجمال الآيات، لكن عند التلاوة، كانت  أخشى الخطأ، وأخجل من ألا تُسلس لي مخارج الحروف. وفي أول يوم دخلتُ فيه الحلقة، كان قلبي ينبض بوجل وأتساءل في سرّي: هل سأنجح يوماً في الترتيل كما أتمنى؟😰
+
+وعند سماعي صوتك الحنون يا أستاذتي الغالية.  نعم في تلك اللحظة بالذات، تغير كل شيء. لم أجد أستاذة تصوب الأخطاء بجفاف، بل وجدتُ روحاً حانية تستقبل تعثري بالابتسامة، وتستبدل خوفي بالسكينة.
+كنتِ تصبرين على خطئي  دون عجل وتأخذين بيدي في أحكام التجويد خطوة بخطوة. إن أخطأتُ أخذتِني بالرفق، وإن أتقنتُ غمرتِني بالثناء والدعاء. بفضل صبركِ وحسن توجيهكِ، لم تعد الحلقة مجرد درس، بل أصبحت واحتي الدافئة التي أفرّ إليها من زحام الحياة.
+
+          مع مرور الأيام، تلاشت الرائبة واختفت اللعثمة، وأشرقت الحروف على لساني بنغم يملؤه الحب والخشوع. لم تكتفي بتعليمني كيف أضبط الغنة أو أمد الحروف، بل علمتني  أشياء كثيرة أزهر غرسكِ في قلبي، وأصبح القرآن رفيقي وسكني. ومازلت أتطلع ان أتقدم وأتحسن حتي اصبح فردا تفتخرين به أنك كنتي معلمتي وسأبذل بإذن الله قصارى جهدي فساعدوني فيما تبقى  ولن أنسى ذلك ماحييت فمكانتك عندي عظيمة
+
+أستاذتي الفاضلة 😘عفاف 😘
+لكِ مني كل الامتنان والتقدير. شكراً لأنكِ كنتِ النور الذي أضاء لي طريق كتاب الله، والشمعة التي احترقت لتستنير أرواحنا. إن كل آية أرتلها اليوم بصوت مطمئن هي ثمرة من ثمار صبركِ وعطائكِ.
+أسأل الله العظيم أن يرفع قدركِ في عليين، وأن يجعل كل حرف تعلمته منكِ نوراً لكِ يوم القيامة، وتاج وقار يكلل رأسكِ ورأس والديكِ في الجنة. جزاكِ الله عني وعن كتاب الله خير الجزاء.
+ فقصتي معك معلمتي ليست مجرد حصص دراسية بل هي غرس ممتد وأثر لا يزول زال  سأسعى جاهدة لتحقيق الأفضل شكرا لأنك كنت النور الذي أخذ  بيدي نحو كلا م الله  احبكككك معلنتيييي 🥰😘🥰` },
+  { id: 8,  name: "كوثر بن حمزة",      type: "image", file: "letter-08.png" },
+  { id: 9,  name: "سارة البعدوي",      type: "text",  text: `إلى من ضحت بوقتها وجهدها ونالت ثمار تعبها..لك استاذتنا عفاف♥️
+، شكراً لكِ بلا حدود. لقد كنتِ لنا نعمة المعلمة والموجهة، تصححين الخطأ برفق، وتزيدين العزم بالكلمة الطيبة.
+
+شكرًا لكِ لأنكِ لم تعلّمينا القرآن فقط، بل فتحتِ لنا بابًا إلى نورٍ يحيي القلب ويهدي الروح.
+كل حرف أخذناه منكِ كان بركة، وكل توجيهٍ منكِ كان خطوة تقرّبنا من الله.
+نسأل الله أن يجعل أثركِ في أعمارنا صدقة جارية لا تنقطع، وأن يمنحكِ من الخير ما يفوق عطائكِ.
+
+لكِ الامتنان كله، والدعاء الصادق دائمًا.` },
+  { id: 10, name: "مريم السيدي",       type: "image", file: "letter-10.png" },
+  { id: 11, name: "نعيمة شوافي",       type: "text",  text: `بسم الله الرحمان الرحيم 
+إلى معلمتي الغالية على قلبي عفاف 
+تتسابق الكلمات فتتزاحم العبارات لتنظم عقد الشكر الذي تستحقينه.
+هنيئا لي لأنني طالبة لمعلمة مختلفة عن الجميع. جميلة الخلق و الروح و عذبة النصح و الكلمات، تميزت بطيبة قلبها و ابتسامتها و اسلوبها و نصحها و ارشادها.
+العبارات لا تكفي لوصف امتناني و محبتي و احترامي و شكري لك معلمتي الغالية.
+كم مرة فترت عزيمتنا فشددتي فيها هممنا و بذلت وقتك للجميع تكرما و صبرتي رغم المصاعب بثبات.
+كنتي العون و كنت السند بعد الله سبحانه و تعالى في تجاوز الصعوبات كنت كسحابةمعطأة سقت الأرض فاخضرت.جازاك ربي عنا خير الجزاء و البسك و والديك تاج الوقار.
+يا معلمة القران 
+أنت على ثغر من ثغورالامة
+فسدي الثغور.❤️
+و اقيمي حصون الحق في قلبك
+فانت على اعظم منبر للدعوة💚
+طالبتك المحبة نعيمة.` },
+  { id: 12, name: "سندس رفرافي",       type: "text",  text: `...` },
+  { id: 13, name: "آية مذكور",         type: "image", file: "letter-13.png" },
+  { id: 14, name: "مباركة الغالي",     type: "text",  text: `...` },
+  { id: 15, name: "إيمان رمضان",       type: "image", file: "letter-15.png" },
 ];
+
+const TOTAL = studentLetters.length;
+const students = studentLetters.map((item) => item.name);
 
 const islands = [
   { id: 1, emoji: "🌸", title: "رسالة ١", caption: "بداية الحكاية", collectible: "🌸", secret: "وجدتِ زهرة صغيرة! ✿", action: "اضغطي على الزهرة", kind: "garden" },
@@ -31,8 +78,12 @@ const islands = [
   { id: 7, emoji: "🌴", title: "رسالة ٧", caption: "معًا في الطريق", collectible: "🩷", secret: "قلب صغير لكِ! 🩷", action: "التقطي القلب", kind: "home2" },
   { id: 8, emoji: "💜", title: "رسالة ٨", caption: "أثر طيب", collectible: "🪻", secret: "زهرة اللافندر تهديكِ رائحتها 🌿", action: "المسي الزهرة", kind: "pergola" },
   { id: 9, emoji: "🏮", title: "رسالة ٩", caption: "من ذكرياتنا", collectible: "🌙", secret: "القمر ظهر لكِ! 🌙", action: "المسي القمر", kind: "lantern" },
-  { id: 10, emoji: "🕌", title: "رسالة ١٠", caption: "اقتربنا...", collectible: "⭐", secret: "نجمة أخيرة قبل النهاية! ⭐", action: "التقطي النجمة", kind: "dome" },
-  { id: 11, emoji: "🌿", title: "رسالة ١١", caption: "النهاية الجميلة", collectible: "🤍", secret: "وجدتِ قلب الرحلة كله 🤍", action: "افتحي الحديقة الأخيرة", kind: "final" },
+  { id: 10, emoji: "🕌", title: "رسالة ١٠", caption: "اقتربنا...", collectible: "⭐", secret: "وجدتِ نجمة جميلة! ⭐", action: "التقطي النجمة", kind: "dome" },
+  { id: 11, emoji: "🌿", title: "رسالة ١١", caption: "كلمة أخرى من القلب", collectible: "🤍", secret: "وجدتِ قلبًا أبيض صغيرًا 🤍", action: "المسي القلب", kind: "garden3" },
+  { id: 12, emoji: "🕊️", title: "رسالة ١٢", caption: "دعاء جميل", collectible: "🕊️", secret: "حمامة سلام انضمّت إلى الرحلة 🕊️", action: "اقتربي من الحمامة", kind: "dove" },
+  { id: 13, emoji: "🪷", title: "رسالة ١٣", caption: "كلمة دافئة", collectible: "🪷", secret: "وجدتِ زهرة لوتس صغيرة 🪷", action: "المسي الزهرة", kind: "lotus" },
+  { id: 14, emoji: "🌼", title: "رسالة ١٤", caption: "قرب النهاية", collectible: "🌼", secret: "زهرة أخيرة قبل المحطة الأخيرة 🌼", action: "التقطي الزهرة", kind: "meadow" },
+  { id: 15, emoji: "🌺", title: "رسالة ١٥", caption: "المحطة الأخيرة", collectible: "💗", secret: "وصلتِ إلى قلب الرحلة كله 💗", action: "افتحي المحطة الأخيرة", kind: "final" },
 ];
 
 
@@ -52,10 +103,10 @@ function App() {
 
   const statusMessage = useMemo(() => {
     if (progress === 0) return "رحلتنا تبدأ هنا…";
-    if (progress < 4) return "بدأت الذكريات تتجمع 🤍";
-    if (progress < 7) return "كم رسالة جميلة اكتشفنا! ✨";
-    if (progress < 10) return "اقتربنا من النهاية… 🌷";
-    if (progress < 11) return "هناك مفاجأة أخيرة تنتظركِ…";
+    if (progress < 5) return "بدأت الذكريات تتجمع 🤍";
+    if (progress < 9) return "كم رسالة جميلة اكتشفنا! ✨";
+    if (progress < 13) return "قطعنا طريقًا طويلًا معًا 🌷";
+    if (progress < TOTAL) return "بقيت محطات قليلة… والمفاجأة تقترب 💗";
     return "جمعتِ كل ذكريات الرحلة! 💗";
   }, [progress]);
 
@@ -115,7 +166,7 @@ function App() {
     // Let React/browser paint the walking state first.
     setTimeout(() => {
       // Now move the character to the next island.
-      setTravelerStage(nextStage);
+      setTravelerStage(Math.min(nextStage, TOTAL - 1));
 
       // The island becomes unlocked too.
       setProgress(nextStage);
@@ -217,7 +268,7 @@ function Welcome({ onStart, progress }) {
           <span>المستوى الثالث</span>
         </div>
         <p className="soft-copy">
-          ١١ رسالة صغيرة، من ١١ قلبًا…<br />
+          ١٥ رسالة صغيرة، من ١٥ قلبًا…<br />
           اجتمعت لتقول لكِ: شكرًا 🤍
         </p>
         <button className="start-button" onClick={onStart}>
@@ -289,15 +340,15 @@ function Journey({
           </div>
         </div> */}
 
-        <svg className="island-path" viewBox="0 0 1000 720" preserveAspectRatio="none" aria-hidden="true">
+        <svg className="island-path" viewBox="0 0 1000 940" preserveAspectRatio="none" aria-hidden="true">
           <defs>
-            <mask id="island-path-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1000" height="720">
-              <rect width="1000" height="720" fill="white" />
-              {[875,625,375,125,125,375,625,875,875,625,375].map((x, i) => (
+            <mask id="island-path-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1000" height="940">
+              <rect width="1000" height="940" fill="white" />
+              {[875,625,375,125,125,375,625,875,875,625,375,125,125,375,625].map((x, i) => (
                 <circle
                   key={i}
                   cx={x}
-                  cy={[145,145,145,145,370,370,370,370,590,590,590][i]}
+                  cy={[120,120,120,120,350,350,350,350,580,580,580,580,810,810,810][i]}
                   r="78"
                   fill="black"
                 />
@@ -307,24 +358,28 @@ function Journey({
           <path
             className="path-stroke"
             mask="url(#island-path-mask)"
-            d="M875 145
-               C800 112 700 178 625 145
-               C550 112 450 178 375 145
-               C300 112 205 178 125 145
-               C78 207 82 309 125 370
-               C205 405 300 330 375 370
-               C455 410 545 330 625 370
-               C705 410 800 330 875 370
-               C920 432 918 525 875 590
-               C800 628 700 555 625 590
-               C545 625 455 555 375 590"
+            d="M875 120
+               C800 88 700 152 625 120
+               C550 88 450 152 375 120
+               C300 88 205 152 125 120
+               C78 185 82 288 125 350
+               C205 392 300 308 375 350
+               C455 392 545 308 625 350
+               C705 392 800 308 875 350
+               C922 415 918 518 875 580
+               C800 622 700 538 625 580
+               C545 622 455 538 375 580
+               C295 622 205 538 125 580
+               C78 645 82 748 125 810
+               C205 852 300 768 375 810
+               C455 852 545 768 625 810"
           />
         </svg>
 
         <div className="island-grid">
           <svg
             className="mobile-island-path"
-            viewBox="0 0 100 1100"
+            viewBox="0 0 100 1500"
             preserveAspectRatio="none"
             aria-hidden="true"
           >
@@ -335,9 +390,9 @@ function Journey({
                 <stop offset="100%" stopColor="#8eaeb1" />
               </linearGradient>
 
-              <mask id="mobile-path-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="1100">
-                <rect width="100" height="1100" fill="white" />
-                {Array.from({ length: 11 }, (_, i) => (
+              <mask id="mobile-path-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="1500">
+                <rect width="100" height="1500" fill="white" />
+                {Array.from({ length: TOTAL }, (_, i) => (
                   <circle
                     key={i}
                     cx={i % 2 === 0 ? 75 : 25}
@@ -361,7 +416,11 @@ function Journey({
                  C75 688 25 712 25 750
                  C25 788 75 812 75 850
                  C75 888 25 912 25 950
-                 C25 988 75 1012 75 1050"
+                 C25 988 75 1012 75 1050
+                 C75 1088 25 1112 25 1150
+                 C25 1188 75 1212 75 1250
+                 C75 1288 25 1312 25 1350
+                 C25 1388 75 1412 75 1450"
             />
             <path
               className="mobile-path-stroke"
@@ -376,7 +435,11 @@ function Journey({
                  C75 688 25 712 25 750
                  C25 788 75 812 75 850
                  C75 888 25 912 25 950
-                 C25 988 75 1012 75 1050"
+                 C25 988 75 1012 75 1050
+                 C75 1088 25 1112 25 1150
+                 C25 1188 75 1212 75 1250
+                 C75 1288 25 1312 25 1350
+                 C25 1388 75 1412 75 1450"
             />
 
             <g className="mobile-path-sparkles">
@@ -385,6 +448,8 @@ function Journey({
               <circle cx="50" cy="500" r="1.4" />
               <circle cx="50" cy="700" r="1.4" />
               <circle cx="50" cy="900" r="1.4" />
+              <circle cx="50" cy="1100" r="1.4" />
+              <circle cx="50" cy="1300" r="1.4" />
             </g>
           </svg>
 
@@ -418,7 +483,7 @@ function Journey({
               <strong>حقيبة الذكريات</strong>
               <small>كل محطة تمنحكِ شيئًا صغيرًا</small>
             </div>
-            <b>{collection.length}/11</b>
+            <b>{collection.length}/{TOTAL}</b>
           </div>
           <div className="collection-items">
             {islands.map((item) => (
@@ -653,14 +718,111 @@ function DiscoveryScene({ number, onClose, onOpenLetter }) {
   );
 }
 
+function LetterContent({ letterData }) {
+  const [assetError, setAssetError] = useState(false);
+
+  if (letterData.type === "text") {
+    return (
+      <div className="text-letter-card">
+        <div className="text-letter-decoration">❀　♡　✦</div>
+        {letterData.text?.trim() ? (
+          <p>{letterData.text}</p>
+        ) : (
+          <div className="letter-placeholder">
+            <span>📝</span>
+            <strong>الرسالة النصية جاهزة للإضافة</strong>
+            <small>
+              ضعي نص رسالة {letterData.name} في خانة <code>text</code> داخل
+              <br />
+              <code>studentLetters</code> في ملف <code>main.jsx</code>.
+            </small>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  const assetUrl = `${import.meta.env.BASE_URL}letters/${letterData.file}`;
+
+  if (letterData.type === "image") {
+    return (
+      <div className="image-letter-card">
+        {!assetError ? (
+          <img
+            className="student-letter-image"
+            src={assetUrl}
+            alt={`رسالة ${letterData.name}`}
+            onError={() => setAssetError(true)}
+          />
+        ) : (
+          <AssetPlaceholder
+            icon="🖼️"
+            title={`أضيفي صورة رسالة ${letterData.name}`}
+            filename={letterData.file}
+          />
+        )}
+      </div>
+    );
+  }
+
+  if (letterData.type === "audio") {
+    return (
+      <div className="audio-letter-card">
+        <div className="audio-letter-icon">🎧</div>
+        <strong>رسالة صوتية من {letterData.name}</strong>
+        <span>اضغطي على التشغيل واستمعي إليها 🤍</span>
+
+        {!assetError ? (
+          <audio
+            className="voice-player"
+            controls
+            preload="metadata"
+            src={assetUrl}
+            onError={() => setAssetError(true)}
+          >
+            متصفحكِ لا يدعم تشغيل الصوت.
+          </audio>
+        ) : (
+          <AssetPlaceholder
+            icon="🎙️"
+            title={`أضيفي التسجيل الصوتي لـ ${letterData.name}`}
+            filename={letterData.file}
+          />
+        )}
+      </div>
+    );
+  }
+
+  return null;
+}
+
+function AssetPlaceholder({ icon, title, filename }) {
+  return (
+    <div className="asset-placeholder">
+      <span>{icon}</span>
+      <strong>{title}</strong>
+      <small>
+        ضعي الملف داخل
+        <br />
+        <code>public/letters/{filename}</code>
+      </small>
+    </div>
+  );
+}
+
 function LetterModal({ number, progress, onClose, onDiscover }) {
   const isNew = number === progress + 1;
   const final = number === TOTAL;
+  const letterData = studentLetters[number - 1];
 
   return (
     <div className={`modal-backdrop ${final ? "final-letter-backdrop" : ""}`} onClick={onClose}>
       {final && <div className="final-petals">🌸　✦　🌷　♡　✧　🌸</div>}
-      <div className={`letter-modal ${final ? "final-letter-modal" : ""}`} onClick={(e) => e.stopPropagation()}>
+
+      <div
+        className={`letter-modal ${final ? "final-letter-modal" : ""}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <button className="close-button" onClick={onClose}>×</button>
 
         <div className="opened-envelope">
@@ -669,36 +831,36 @@ function LetterModal({ number, progress, onClose, onDiscover }) {
         </div>
 
         <p className="modal-kicker">
-          {final ? "النهاية الجميلة · ١١ من ١١" : `الجزيرة ${number} · رسالة ${number} من ١١`}
+          {final
+            ? "المحطة الأخيرة · ١٥ من ١٥"
+            : `الجزيرة ${number} · رسالة ${number} من ${TOTAL}`}
         </p>
 
-        <h2>
-          {final
-            ? "رسالتنا الأخيرة إلى عفاف 🤍"
-            : `رسالة من ${students[number - 1]} 🤍`}
-        </h2>
+        <h2>{`رسالة من ${letterData.name} 🤍`}</h2>
 
         {final && (
           <p className="final-intro">
-            بعد أن جمعتِ كل الذكريات، بقيت كلمة واحدة أردنا أن نقولها جميعًا…
+            وصلتِ إلى آخر محطة في رحلتنا… بقيت هذه الرسالة، ثم مفاجأتنا الأخيرة لكِ ✨
           </p>
         )}
 
-        <div className="letter-frame">
-          <img
-            src={`/letters/letter-${String(number).padStart(2, "0")}.svg`}
-            alt={`رسالة ${students[number - 1]}`}
-          />
+        <div className={`letter-content letter-type-${letterData.type}`}>
+          <LetterContent letterData={letterData} />
         </div>
 
         <div className="modal-actions">
-          <button className="back-button" onClick={onClose}>العودة إلى الخريطة</button>
+          <button className="back-button" onClick={onClose}>
+            العودة إلى الخريطة
+          </button>
+
           {isNew ? (
             <button className="discover-button" onClick={onDiscover}>
               {final ? "أنهي الرحلة واحتفلي معنا ✨" : "أضفتُها إلى ذكرياتي ✨"}
             </button>
           ) : (
-            <button className="discover-button" onClick={onClose}>جميلة جدًا 🤍</button>
+            <button className="discover-button" onClick={onClose}>
+              جميلة جدًا 🤍
+            </button>
           )}
         </div>
       </div>
@@ -713,7 +875,7 @@ function FinalCelebration({ onClose }) {
         <div className="celebration-stars">✦ ✧ ✦ ✧ ✦</div>
         <div className="celebration-bloom">🌷</div>
         <p>اكتملت الرحلة!</p>
-        <h2>جمعنا لكِ ١١ ذكرى…<br />و١١ قلبًا مليئًا بالامتنان 🤍</h2>
+        <h2>جمعنا لكِ ١٥ ذكرى…<br />و١٥ قلبًا مليئًا بالامتنان 🤍</h2>
         <div className="celebration-line">❀　♡　❀　♡　❀</div>
         <p className="celebration-small">
           شكرًا لكِ على صبركِ، لطفكِ، وعطائكِ.<br />
