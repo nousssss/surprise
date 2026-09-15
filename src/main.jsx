@@ -322,6 +322,72 @@ function Journey({
         </svg>
 
         <div className="island-grid">
+          <svg
+            className="mobile-island-path"
+            viewBox="0 0 100 1100"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient id="mobilePathGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#d787a0" />
+                <stop offset="48%" stopColor="#b993b7" />
+                <stop offset="100%" stopColor="#8eaeb1" />
+              </linearGradient>
+
+              <mask id="mobile-path-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="1100">
+                <rect width="100" height="1100" fill="white" />
+                {Array.from({ length: 11 }, (_, i) => (
+                  <circle
+                    key={i}
+                    cx={i % 2 === 0 ? 75 : 25}
+                    cy={50 + i * 100}
+                    r="15"
+                    fill="black"
+                  />
+                ))}
+              </mask>
+            </defs>
+
+            <path
+              className="mobile-path-shadow"
+              d="M75 50
+                 C75 88 25 112 25 150
+                 C25 188 75 212 75 250
+                 C75 288 25 312 25 350
+                 C25 388 75 412 75 450
+                 C75 488 25 512 25 550
+                 C25 588 75 612 75 650
+                 C75 688 25 712 25 750
+                 C25 788 75 812 75 850
+                 C75 888 25 912 25 950
+                 C25 988 75 1012 75 1050"
+            />
+            <path
+              className="mobile-path-stroke"
+              mask="url(#mobile-path-mask)"
+              d="M75 50
+                 C75 88 25 112 25 150
+                 C25 188 75 212 75 250
+                 C75 288 25 312 25 350
+                 C25 388 75 412 75 450
+                 C75 488 25 512 25 550
+                 C25 588 75 612 75 650
+                 C75 688 25 712 25 750
+                 C25 788 75 812 75 850
+                 C75 888 25 912 25 950
+                 C25 988 75 1012 75 1050"
+            />
+
+            <g className="mobile-path-sparkles">
+              <circle cx="50" cy="100" r="1.4" />
+              <circle cx="50" cy="300" r="1.4" />
+              <circle cx="50" cy="500" r="1.4" />
+              <circle cx="50" cy="700" r="1.4" />
+              <circle cx="50" cy="900" r="1.4" />
+            </g>
+          </svg>
+
           {islands.map((island) => {
             const unlocked = island.id <= progress + 1;
             const discovered = island.id <= progress;
@@ -332,16 +398,16 @@ function Journey({
                 unlocked={unlocked}
                 discovered={discovered}
                 collected={collection.includes(island.id)}
+                current={island.id === progress + 1}
                 onClick={() => onOpen(island.id)}
               />
             );
           })}
+          <JourneyTraveler
+            stage={travelerStage}
+            isWalking={isWalking}
+          />
         </div>
-
-        <JourneyTraveler
-  stage={travelerStage}
-  isWalking={isWalking}
-/>
 
         <div className="collection-panel">
           <div className="collection-title">
@@ -412,10 +478,21 @@ function JourneyTraveler({ stage, isWalking }) {
   );
 }
 
-function IslandCard({ island, unlocked, discovered, collected, onClick }) {
+function IslandCard({
+  island,
+  unlocked,
+  discovered,
+  collected,
+  current,
+  onClick,
+}) {
   return (
     <button
-      className={`island-card ${island.kind} ${unlocked ? "unlocked" : "locked"} ${discovered ? "discovered" : ""} ${collected ? "collected" : ""}`}
+      className={`island-card ${island.kind} ${
+        unlocked ? "unlocked" : "locked"
+      } ${discovered ? "discovered" : ""} ${
+        collected ? "collected" : ""
+      } ${current ? "current" : ""}`}
       onClick={onClick}
       disabled={!unlocked}
     >
@@ -444,7 +521,7 @@ function IslandCard({ island, unlocked, discovered, collected, onClick }) {
     : ""}
 </small>
       </span>
-      {unlocked && !discovered && <span className="tap-hint">استكشفيها ✨</span>}
+      {current && !discovered && <span className="tap-hint">استكشفيها ✨</span>}
     </button>
   );
 }
