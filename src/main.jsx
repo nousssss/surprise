@@ -1,5 +1,6 @@
 
-import React, { useMemo, useState } from "react";
+// import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 import travelerImage from "./assets/traveler.png";
@@ -8,7 +9,7 @@ import letterEnvelopeImage from "./assets/letter-envelope.png";
 const studentLetters = [
   { id: 1,  name: "سهيلة عمراوي", type: "audio", file: "letter-01.m4a"    },
   { id: 2,  name: "كوثر إبراهيم",      type: "image", file: "letter-02.png" },
-  { id: 3,  name: "فاطمة عياد",        type: "image", file: "letter-03.png" },
+  { id: 3,  name: "فاطمة عياد",        type: "video", file: "letter-03.mp4" },
   { id: 4,  name: "إيناس بشيري",       type: "text",  text: `...` },
   { id: 5,  name: "الحاسي جهيدة",      type: "audio", file: "letter-05.m4a" },
   { id: 6,  name: "سمراء بن فليس",     type: "audio", file: "letter-06.m4a" },
@@ -85,14 +86,14 @@ const TOTAL = studentLetters.length;
 const students = studentLetters.map((item) => item.name);
 
 const islands = [
-  { id: 1, emoji: "🌸", title: "المحطة ١", caption: "بداية الحكاية", collectible: "🌸", secret: "وجدتِ زهرة صغيرة! ✿", action: "اضغطي على الزهرة", kind: "garden" },
-  { id: 2, emoji: "🏡", title: "المحطة ٢", caption: "ذكرى جميلة", collectible: "🦋", secret: "فراشة صغيرة كانت تنتظركِ! 🦋", action: "هل رأيتِ الفراشة؟", kind: "home" },
+  { id: 1, emoji: "🏡", title: "المحطة ١", caption: "بداية الحكاية", collectible: "🌸", secret: "وجدتِ زهرة صغيرة! ✿", action: "اضغطي على الزهرة", kind: "garden" },
+  { id: 2, emoji: "🌴", title: "المحطة ٢", caption: "ذكرى جميلة", collectible: "🦋", secret: "فراشة صغيرة كانت تنتظركِ! 🦋", action: "هل رأيتِ الفراشة؟", kind: "home" },
   { id: 3, emoji: "🌳", title: "المحطة ٣", caption: "لحظة لا تُنسى", collectible: "🐦", secret: "حتى العصفور جاء ليستمع! 🐦", action: "اضغطي على العصفور", kind: "tree" },
   { id: 4, emoji: "🪻", title: "المحطة ٤", caption: "من القلب", collectible: "🏮", secret: "أنرتِ الفانوس! ✨", action: "أضيئي الفانوس", kind: "gazebo" },
   { id: 5, emoji: "🌷", title: "المحطة ٥", caption: "كلمات امتنان", collectible: "🎀", secret: "وجدتِ شريطة جميلة! 🎀", action: "خذي الشريطة", kind: "garden2" },
   { id: 6, emoji: "⛺", title: "المحطة ٦", caption: "محطة دافئة", collectible: "📖", secret: "هناك كتاب صغير هنا… 📖", action: "افتحي الكتاب", kind: "tent" },
-  { id: 7, emoji: "🌴", title: "المحطة ٧", caption: "معًا في الطريق", collectible: "🩷", secret: "قلب صغير لكِ! 🩷", action: "التقطي القلب", kind: "home2" },
-  { id: 8, emoji: "💜", title: "المحطة ٨", caption: "أثر طيب", collectible: "🪻", secret: "زهرة اللافندر تهديكِ رائحتها 🌿", action: "المسي الزهرة", kind: "pergola" },
+  { id: 7, emoji: "🌸", title: "المحطة ٧", caption: "معًا في الطريق", collectible: "🩷", secret: "قلب صغير لكِ! 🩷", action: "التقطي القلب", kind: "home2" },
+  { id: 8, emoji: "🪻", title: "المحطة ٨", caption: "أثر طيب", collectible: "💜", secret: "زهرة اللافندر تهديكِ رائحتها 🌿", action: "المسي القلب", kind: "pergola" },
   { id: 9, emoji: "🏮", title: "المحطة ٩", caption: "من ذكرياتنا", collectible: "🌙", secret: "القمر ظهر لكِ! 🌙", action: "المسي القمر", kind: "lantern" },
   { id: 10, emoji: "🕌", title: "المحطة ١٠", caption: "اقتربنا...", collectible: "⭐", secret: "وجدتِ نجمة جميلة! ⭐", action: "التقطي النجمة", kind: "dome" },
   { id: 11, emoji: "🌿", title: "المحطة ١١", caption: "كلمة أخرى من القلب", collectible: "🤍", secret: "وجدتِ قلبًا أبيض صغيرًا 🤍", action: "المسي القلب", kind: "garden3" },
@@ -113,6 +114,79 @@ function App() {
   const [letter, setLetter] = useState(null);
   const [discovery, setDiscovery] = useState(null);
   const [celebration, setCelebration] = useState(false);
+  const stepsRef = useRef(null);
+  const islandOpenSoundRef = useRef(null);
+  const collectSoundRef = useRef(null);
+  const letterOpenSoundRef = useRef(null);
+  const ambienceRef = useRef(null);
+const [ambienceOn, setAmbienceOn] = useState(false);
+const startAmbience = async () => {
+  const audio = ambienceRef.current;
+
+  if (!audio) return;
+
+  audio.volume = 0.12;
+
+  try {
+    await audio.play();
+    setAmbienceOn(true);
+  } catch (error) {
+    console.log("Ambience could not start:", error);
+  }
+};
+
+const startJourney = () => { setStarted(true); startAmbience(); };
+const toggleAmbience = async () => {
+  const audio = ambienceRef.current;
+
+  if (!audio) return;
+
+  if (ambienceOn) {
+    audio.pause();
+    setAmbienceOn(false);
+  } else {
+    audio.volume = 0.12;
+
+    try {
+      await audio.play();
+      setAmbienceOn(true);
+    } catch (error) {
+      console.log("Ambience could not start:", error);
+    }
+  }
+};
+
+  const playSound = (ref, volume = 0.3) => {
+    const audio = ref.current;
+
+    if (!audio) return;
+
+    audio.pause();
+    audio.currentTime = 0;
+    audio.volume = volume;
+
+    audio.play().catch(() => {});
+  };
+
+
+
+  useEffect(() => {
+  const audio = stepsRef.current;
+
+  if (!audio) return;
+
+  if (isWalking) {
+    audio.currentTime = 0;
+    audio.volume = 0.7;
+
+    audio.play().catch((error) => {
+      console.log("Footstep sound could not play:", error);
+    });
+  } else {
+    audio.pause();
+    audio.currentTime = 0;
+  }
+}, [isWalking]);
 
 
 
@@ -127,31 +201,46 @@ function App() {
   }, [progress]);
 
   const openIsland = (id) => {
-    if (id > progress + 1) return;
-    setActiveIsland(id);
-  };
+  if (id > progress + 1) return;
+
+  playSound(islandOpenSoundRef, 0.22);
+  setActiveIsland(id);
+};
 
   const closeIsland = () => setActiveIsland(null);
 
   const collectSecret = (id) => {
-    setCollection((prev) => prev.includes(id) ? prev : [...prev, id]);
-  };
+  if (collection.includes(id)) return;
 
-  const openEnvelope = () => {
-    const id = activeIsland;
-    setActiveIsland(null);
-    setTimeout(() => setDiscovery(id), 120);
-  };
+  playSound(collectSoundRef, 0.3);
 
-  const closeDiscovery = () => setDiscovery(null);
+  setCollection((prev) =>
+    prev.includes(id) ? prev : [...prev, id]
+  );
+};
 
-  const openLetter = () => {
-    const id = discovery;
-    setDiscovery(null);
-    setTimeout(() => {
-      setLetter(id);
-    }, 120);
-  };
+ const openEnvelope = () => {
+  const id = activeIsland;
+
+  setActiveIsland(null);
+
+  setTimeout(() => {
+    playSound(letterOpenSoundRef, 0.28);
+    setDiscovery(id);
+  }, 120);
+};
+
+const closeDiscovery = () => setDiscovery(null);
+
+const openLetter = () => {
+  const id = discovery;
+
+  setDiscovery(null);
+
+  setTimeout(() => {
+    setLetter(id);
+  }, 120);
+};
 
   const closeLetter = () => {
     const finishing = letter === TOTAL;
@@ -191,7 +280,7 @@ function App() {
     // Stop the walking animation after she arrives.
     setTimeout(() => {
       setIsWalking(false);
-    }, 3400);
+    }, 1500);
   }
 
   if (finishing) {
@@ -214,8 +303,54 @@ function App() {
 
   return (
     <main className="app">
+
+      <audio
+  ref={ambienceRef}
+  src={`${import.meta.env.BASE_URL}audio/ambience.mp3`}
+  loop
+  preload="auto"
+/>
+
+<button
+  className={`ambience-toggle ${ambienceOn ? "on" : ""}`}
+  onClick={toggleAmbience}
+  aria-label={ambienceOn ? "إيقاف صوت الطبيعة" : "تشغيل صوت الطبيعة"}
+>
+  <span>{ambienceOn ? "🔊" : "🔇"}</span>
+  <span>{ambienceOn ? "صوت الطبيعة" : "الصوت"}</span>
+</button>
+
+      <audio
+  ref={islandOpenSoundRef}
+  src={`${import.meta.env.BASE_URL}audio/island-open.mp3`}
+  preload="auto"
+/>
+
+<audio
+  ref={collectSoundRef}
+  src={`${import.meta.env.BASE_URL}audio/collect.mp3`}
+  preload="auto"
+/>
+
+<audio
+  ref={letterOpenSoundRef}
+  src={`${import.meta.env.BASE_URL}audio/letter-open.mp3`}
+  preload="auto"
+/>
+
+
+    <audio
+      ref={stepsRef}
+      src={`${import.meta.env.BASE_URL}audio/steps.mp3`}
+      loop
+      preload="auto"
+    />
+
       {!started ? (
-        <Welcome onStart={() => setStarted(true)} progress={progress} />
+        <Welcome
+  onStart={startJourney}
+  progress={progress}
+/>
       ) : (
         <Journey
   progress={progress}
@@ -225,6 +360,7 @@ function App() {
   onReset={resetJourney}
   travelerStage={travelerStage}
   isWalking={isWalking}
+  
 />
       )}
 
@@ -807,6 +943,22 @@ function LetterContent({ letterData }) {
       </div>
     );
   }
+
+  if (letterData.type === "video") {
+  return (
+    <div className="video-letter-card">
+      <video
+        className="student-letter-video"
+        controls
+        playsInline
+        preload="metadata"
+        src={`${import.meta.env.BASE_URL}letters/${letterData.file}`}
+      >
+        متصفحكِ لا يدعم تشغيل الفيديو.
+      </video>
+    </div>
+  );
+}
 
   return null;
 }
