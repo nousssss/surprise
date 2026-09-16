@@ -10,7 +10,7 @@ const studentLetters = [
   { id: 1,  name: "سهيلة عمراوي", type: "audio", file: "letter-01.m4a"    },
   { id: 2,  name: "كوثر إبراهيم",      type: "image", file: "letter-02.png" },
   { id: 3,  name: "فاطمة عياد",        type: "video", file: "letter-03.mp4" },
-  { id: 4,  name: "إيناس بشيري",       type: "text",  text: `...` },
+  { id: 4,  name: "إيناس بشيري",       type: "audio", file: "letter-04.m4a" },
   { id: 5,  name: "الحاسي جهيدة",      type: "audio", file: "letter-05.m4a" },
   { id: 6,  name: "سمراء بن فليس",     type: "audio", file: "letter-06.m4a" },
   { id: 7,  name: "حفصة حمدان",        type: "text",  text: `رسالة إلى معلمتي الغالية عفاف رياش من تلميذتيك حفصة حمدان 🥰🥰
@@ -35,19 +35,7 @@ const studentLetters = [
 
 لكِ الامتنان كله، والدعاء الصادق دائمًا.` },
   { id: 10, name: "مريم السيدي",       type: "image", file: "letter-10.png" },
-  { id: 11, name: "نعيمة شوافي",       type: "text",  text: `بسم الله الرحمان الرحيم 
-إلى معلمتي الغالية على قلبي عفاف 
-تتسابق الكلمات فتتزاحم العبارات لتنظم عقد الشكر الذي تستحقينه.
-هنيئا لي لأنني طالبة لمعلمة مختلفة عن الجميع. جميلة الخلق و الروح و عذبة النصح و الكلمات، تميزت بطيبة قلبها و ابتسامتها و اسلوبها و نصحها و ارشادها.
-العبارات لا تكفي لوصف امتناني و محبتي و احترامي و شكري لك معلمتي الغالية.
-كم مرة فترت عزيمتنا فشددتي فيها هممنا و بذلت وقتك للجميع تكرما و صبرتي رغم المصاعب بثبات.
-كنتي العون و كنت السند بعد الله سبحانه و تعالى في تجاوز الصعوبات كنت كسحابةمعطأة سقت الأرض فاخضرت.جازاك ربي عنا خير الجزاء و البسك و والديك تاج الوقار.
-يا معلمة القران 
-أنت على ثغر من ثغورالامة
-فسدي الثغور.❤️
-و اقيمي حصون الحق في قلبك
-فانت على اعظم منبر للدعوة💚
-طالبتك المحبة نعيمة.` },
+  { id: 11, name: "نعيمة شوافي",       type: "video", file: "letter-11.mp4" },
   { id: 12, name: "سندس رفرافي",       type: "text",  text: `إلى معلمتي الغالية عفاف 🤍🌿
 
 معلمتي عفاف،
@@ -119,8 +107,9 @@ function App() {
   const collectSoundRef = useRef(null);
   const letterOpenSoundRef = useRef(null);
   const ambienceRef = useRef(null);
-const [ambienceOn, setAmbienceOn] = useState(false);
-const startAmbience = async () => {
+  const [ambienceOn, setAmbienceOn] = useState(false);
+  const applauseSoundRef = useRef(null);
+  const startAmbience = async () => {
   const audio = ambienceRef.current;
 
   if (!audio) return;
@@ -134,6 +123,12 @@ const startAmbience = async () => {
     console.log("Ambience could not start:", error);
   }
 };
+
+  useEffect(() => {
+  if (celebration) {
+    playSound(applauseSoundRef, 0.28);
+  }
+}, [celebration]);
 
 const startJourney = () => { setStarted(true); startAmbience(); };
 const toggleAmbience = async () => {
@@ -305,64 +300,70 @@ const openLetter = () => {
     <main className="app">
 
       <audio
-  ref={ambienceRef}
-  src={`${import.meta.env.BASE_URL}audio/ambience.mp3`}
-  loop
-  preload="auto"
-/>
-
-<button
-  className={`ambience-toggle ${ambienceOn ? "on" : ""}`}
-  onClick={toggleAmbience}
-  aria-label={ambienceOn ? "إيقاف صوت الطبيعة" : "تشغيل صوت الطبيعة"}
->
-  <span>{ambienceOn ? "🔊" : "🔇"}</span>
-  <span>{ambienceOn ? "صوت الطبيعة" : "الصوت"}</span>
-</button>
+        ref={applauseSoundRef}
+        src={`${import.meta.env.BASE_URL}audio/applause.mp3`}
+        preload="auto"
+      />
 
       <audio
-  ref={islandOpenSoundRef}
-  src={`${import.meta.env.BASE_URL}audio/island-open.mp3`}
-  preload="auto"
-/>
+        ref={ambienceRef}
+        src={`${import.meta.env.BASE_URL}audio/ambience.mp3`}
+        loop
+        preload="auto"
+      />
 
-<audio
-  ref={collectSoundRef}
-  src={`${import.meta.env.BASE_URL}audio/collect.mp3`}
-  preload="auto"
-/>
+      <button
+        className={`ambience-toggle ${ambienceOn ? "on" : ""}`}
+        onClick={toggleAmbience}
+        aria-label={ambienceOn ? "إيقاف صوت الطبيعة" : "تشغيل صوت الطبيعة"}
+      >
+        <span>{ambienceOn ? "🔊" : "🔇"}</span>
+        <span>{ambienceOn ? "صوت الطبيعة" : "الصوت"}</span>
+      </button>
 
-<audio
-  ref={letterOpenSoundRef}
-  src={`${import.meta.env.BASE_URL}audio/letter-open.mp3`}
-  preload="auto"
-/>
+      <audio
+        ref={islandOpenSoundRef}
+        src={`${import.meta.env.BASE_URL}audio/island-open.mp3`}
+        preload="auto"
+      />
+
+      <audio
+        ref={collectSoundRef}
+        src={`${import.meta.env.BASE_URL}audio/collect.mp3`}
+        preload="auto"
+      />
+
+      <audio
+        ref={letterOpenSoundRef}
+        src={`${import.meta.env.BASE_URL}audio/letter-open.mp3`}
+        preload="auto"
+      />
 
 
-    <audio
-      ref={stepsRef}
-      src={`${import.meta.env.BASE_URL}audio/steps.mp3`}
-      loop
-      preload="auto"
-    />
+      <audio
+        ref={stepsRef}
+        src={`${import.meta.env.BASE_URL}audio/steps.mp3`}
+        loop
+        preload="auto"
+      />
 
       {!started ? (
         <Welcome
-  onStart={startJourney}
-  progress={progress}
-/>
+          onStart={startJourney}
+          progress={progress}
+        />
       ) : (
-        <Journey
-  progress={progress}
-  collection={collection}
-  statusMessage={statusMessage}
-  onOpen={openIsland}
-  onReset={resetJourney}
-  travelerStage={travelerStage}
-  isWalking={isWalking}
-  
-/>
-      )}
+              <Journey
+        progress={progress}
+        collection={collection}
+        statusMessage={statusMessage}
+        onOpen={openIsland}
+        onReset={resetJourney}
+        travelerStage={travelerStage}
+        isWalking={isWalking}
+        
+      />
+            )}
 
       {activeIsland && (
         <IslandPlayground
@@ -1038,17 +1039,51 @@ function LetterModal({ number, progress, onClose, onDiscover }) {
 function FinalCelebration({ onClose }) {
   return (
     <div className="celebration-overlay" onClick={onClose}>
-      <div className="celebration-card" onClick={(e) => e.stopPropagation()}>
-        <div className="celebration-stars">✦ ✧ ✦ ✧ ✦</div>
-        <div className="celebration-bloom">🌷</div>
+      <div
+        className="celebration-card"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="celebration-stars">
+          ✦ ✧ ✦ ✧ ✦
+        </div>
+
+        <div className="celebration-bloom">
+          🌷
+        </div>
+
         <p>اكتملت الرحلة!</p>
-        <h2>جمعنا لكِ ١٥ ذكرى…<br />و١٥ قلبًا مليئًا بالامتنان 🤍</h2>
-        <div className="celebration-line">❀　♡　❀　♡　❀</div>
-        <p className="celebration-small">
-          شكرًا لكِ على صبركِ، لطفكِ، وعطائكِ.<br />
-          وعلى كل حرفٍ علّمتِنا إيّاه.
+
+        <h2>
+          جمعنا لكِ ١٥ ذكرى…
+          <br />
+          و١٥ قلبًا مليئًا بالامتنان 🤍
+        </h2>
+
+        <div className="celebration-line">
+          ❀　♡　❀　♡　❀
+        </div>
+
+        <p className="celebration-message">
+          شكرًا لكِ يا أستاذتنا عفاف، على كل حرفٍ علّمتِنا إيّاه،
+          وعلى صبركِ ورفقكِ وتشجيعكِ لنا في كل خطوة.
+          
+          <br />
+          <br />
+
+          نسأل الله أن يجعل كل ما بذلتِه معنا في ميزان حسناتكِ،
+          وأن يبارك لكِ في علمكِ وعملكِ ووقتكِ،
+          وأن يجزيكِ عنا خير الجزاء.
+
+          <br />
+          <br />
+
+          أسعدكِ الله كما أسعدتِ قلوبنا،
+          وكتب لكِ أجر كل آيةٍ قرأناها وتعلّمناها معكِ 🤍
         </p>
-        <button onClick={onClose}>لنعد إلى الذكريات 🌸</button>
+
+        <button onClick={onClose}>
+          لنعد إلى الذكريات 🌸
+        </button>
       </div>
     </div>
   );
