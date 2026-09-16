@@ -2405,3 +2405,70 @@ button:focus-visible{outline:3px solid rgba(191,128,139,.5);outline-offset:3px}
     margin: 15px auto 20px;
   }
 }
+
+.confetti-layer {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.celebration-card {
+  position: relative;
+  z-index: 2;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -30px;
+
+  width: 9px;
+  height: 15px;
+
+  border-radius: 3px;
+
+  opacity: 0.95;
+
+  animation-name: confetti-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.confetti-1 {
+  background: #f5b6c8;
+}
+
+.confetti-2 {
+  background: #e3a4bf;
+}
+
+.confetti-3 {
+  background: #f7d58b;
+}
+
+.confetti-4 {
+  background: #d9b4d8;
+}
+
+.confetti-5 {
+  background: #bcd8c6;
+}
+
+.confetti-6 {
+  background: #fff0f4;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform:
+      translateY(-10vh)
+      rotate(0deg);
+  }
+
+  100% {
+    transform:
+      translateY(115vh)
+      rotate(720deg);
+  }
+}

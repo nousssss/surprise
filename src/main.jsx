@@ -74,20 +74,20 @@ const TOTAL = studentLetters.length;
 const students = studentLetters.map((item) => item.name);
 
 const islands = [
-  { id: 1, emoji: "🏡", title: "المحطة ١", caption: "بداية الحكاية", collectible: "🌸", secret: "وجدتِ زهرة صغيرة! ✿", action: "اضغطي على الزهرة", kind: "garden" },
+  { id: 1, emoji: "🏡", title: "المحطة ١", caption: "بداية الحكاية", collectible: "🌸", secret: "وجدتِ زهرة صغيرة! 🌸", action: "اضغطي على الزهرة", kind: "garden" },
   { id: 2, emoji: "🌴", title: "المحطة ٢", caption: "ذكرى جميلة", collectible: "🦋", secret: "فراشة صغيرة كانت تنتظركِ! 🦋", action: "هل رأيتِ الفراشة؟", kind: "home" },
   { id: 3, emoji: "🌳", title: "المحطة ٣", caption: "لحظة لا تُنسى", collectible: "🐦", secret: "حتى العصفور جاء ليستمع! 🐦", action: "اضغطي على العصفور", kind: "tree" },
-  { id: 4, emoji: "🪻", title: "المحطة ٤", caption: "من القلب", collectible: "🏮", secret: "أنرتِ الفانوس! ✨", action: "أضيئي الفانوس", kind: "gazebo" },
-  { id: 5, emoji: "🌷", title: "المحطة ٥", caption: "كلمات امتنان", collectible: "🎀", secret: "وجدتِ شريطة جميلة! 🎀", action: "خذي الشريطة", kind: "garden2" },
+  { id: 4, emoji: "🌷", title: "المحطة ٤", caption: "من القلب", collectible: "🏮", secret: "أنرتِ الفانوس! ✨", action: "أضيئي الفانوس", kind: "gazebo" },
+  { id: 5, emoji: "🌾", title: "المحطة ٥", caption: "كلمات امتنان", collectible: "🎀", secret: "وجدتِ شريطة جميلة! 🎀", action: "خذي الشريطة", kind: "garden2" },
   { id: 6, emoji: "⛺", title: "المحطة ٦", caption: "محطة دافئة", collectible: "📖", secret: "هناك كتاب صغير هنا… 📖", action: "افتحي الكتاب", kind: "tent" },
   { id: 7, emoji: "🌸", title: "المحطة ٧", caption: "معًا في الطريق", collectible: "🩷", secret: "قلب صغير لكِ! 🩷", action: "التقطي القلب", kind: "home2" },
-  { id: 8, emoji: "🪻", title: "المحطة ٨", caption: "أثر طيب", collectible: "💜", secret: "زهرة اللافندر تهديكِ رائحتها 🌿", action: "المسي القلب", kind: "pergola" },
+  { id: 8, emoji: "🪻", title: "المحطة ٨", caption: "أثر طيب", collectible: "💜", secret: "قلب صغير لكِ! 💜", action: "المسي القلب", kind: "pergola" },
   { id: 9, emoji: "🏮", title: "المحطة ٩", caption: "من ذكرياتنا", collectible: "🌙", secret: "القمر ظهر لكِ! 🌙", action: "المسي القمر", kind: "lantern" },
   { id: 10, emoji: "🕌", title: "المحطة ١٠", caption: "اقتربنا...", collectible: "⭐", secret: "وجدتِ نجمة جميلة! ⭐", action: "التقطي النجمة", kind: "dome" },
   { id: 11, emoji: "🌿", title: "المحطة ١١", caption: "كلمة أخرى من القلب", collectible: "🤍", secret: "وجدتِ قلبًا أبيض صغيرًا 🤍", action: "المسي القلب", kind: "garden3" },
-  { id: 12, emoji: "🕊️", title: "المحطة ١٢", caption: "دعاء جميل", collectible: "🕊️", secret: "حمامة سلام انضمّت إلى الرحلة 🕊️", action: "اقتربي من الحمامة", kind: "dove" },
-  { id: 13, emoji: "🪷", title: "المحطة ١٣", caption: "كلمة دافئة", collectible: "🪷", secret: "وجدتِ زهرة لوتس صغيرة 🪷", action: "المسي الزهرة", kind: "lotus" },
-  { id: 14, emoji: "🌼", title: "المحطة ١٤", caption: "قرب النهاية", collectible: "🌼", secret: "زهرة أخيرة قبل المحطة الأخيرة 🌼", action: "التقطي الزهرة", kind: "meadow" },
+  { id: 12, emoji: "🌻", title: "المحطة ١٢", caption: "دعاء جميل", collectible: "🕊️", secret: "حمامة سلام انضمّت إلى الرحلة 🕊️", action: "اقتربي من الحمامة", kind: "dove" },
+  { id: 13, emoji: "🪷", title: "المحطة ١٣", caption: "كلمة دافئة", collectible: "🌹", secret: "وجدت وردة حمراء جميلة 🌹", action: "المسي الزهرة", kind: "lotus" },
+  { id: 14, emoji: "🌹", title: "المحطة ١٤", caption: "قرب النهاية", collectible: "🌼", secret: "زهرة أخيرة قبل المحطة الأخيرة 🌼", action: "التقطي الزهرة", kind: "meadow" },
   { id: 15, emoji: "🌺", title: "المحطة ١٥", caption: "المحطة الأخيرة", collectible: "💗", secret: "وصلتِ إلى قلب الرحلة كله 💗", action: "افتحي المحطة الأخيرة", kind: "final" },
 ];
 
@@ -633,7 +633,7 @@ function Journey({
           <div className="collection-title">
             <span>🎒</span>
             <div>
-              <strong>حقيبة الذكريات</strong>
+              <strong>حقيبتك</strong>
             </div>
             <b>{collection.length}/{TOTAL}</b>
           </div>
@@ -1037,8 +1037,24 @@ function LetterModal({ number, progress, onClose, onDiscover }) {
 }
 
 function FinalCelebration({ onClose }) {
+  const confetti = Array.from({ length: 28 });
+
   return (
     <div className="celebration-overlay" onClick={onClose}>
+      <div className="confetti-layer" aria-hidden="true">
+        {confetti.map((_, index) => (
+          <span
+            key={index}
+            className={`confetti-piece confetti-${(index % 6) + 1}`}
+            style={{
+              left: `${(index * 13) % 100}%`,
+              animationDelay: `${(index % 8) * 0.12}s`,
+              animationDuration: `${2.6 + (index % 5) * 0.35}s`,
+            }}
+          />
+        ))}
+      </div>
+
       <div
         className="celebration-card"
         onClick={(e) => e.stopPropagation()}
@@ -1066,7 +1082,7 @@ function FinalCelebration({ onClose }) {
         <p className="celebration-message">
           شكرًا لكِ يا أستاذتنا عفاف، على كل حرفٍ علّمتِنا إيّاه،
           وعلى صبركِ ورفقكِ وتشجيعكِ لنا في كل خطوة.
-          
+
           <br />
           <br />
 
@@ -1078,7 +1094,7 @@ function FinalCelebration({ onClose }) {
           <br />
 
           أسعدكِ الله كما أسعدتِ قلوبنا،
-          وكتب لكِ أجر كل آيةٍ قرأناها وتعلّمناها معكِ 🤍
+          وجعل لكِ نصيبًا من أجر كل آيةٍ قرأناها وتعلّمناها معكِ 🤍
         </p>
 
         <button onClick={onClose}>
